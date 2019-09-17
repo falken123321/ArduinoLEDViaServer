@@ -1,8 +1,17 @@
 let name = "Kasper"
 const age = 19
 
-
-for (let i = 0; i < 500000; i++) {
-    console.log(name+" er " +i+" år gammel");
+function sayName(n) {
+    console.log(n);
 }
 
+const sayName2 = function(a) {
+    console.log(a)
+}
+
+const myAdd = (x) => x+2
+
+
+const result = myAdd(31);
+console.log(result)
+sayName2(name)
