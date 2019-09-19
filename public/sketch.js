@@ -3,9 +3,15 @@ const socket = io();
 function setup() {
     createCanvas(400, 400);
     background(225);
+
+    socket.on('positionEvent', newPositionMessage);
   }
   
- 
+  function newPositionMessage(posData) {
+    console.log('Got: ')
+    console.log(posData);
+    newPoint(posData);
+  }
   
   function draw() {
     
@@ -18,22 +24,29 @@ function setup() {
     // line(mouseX,mouseY,400,200);
     // line(mouseX,mouseY,200,400);
     
-    // circle(mouseX,mouseY,50);    
+    // circle(mouseX,mouseY,50);   
+
+  }
+
+  function newPoint(pos) {
+
+    fill(255,0,0);
+    circle(pos.x, pos.y, 10);
   }
 
   function mouseDragged() {
     const y = mouseY;
     const x = mouseX;
-    noStroke();
+
     fill(0,255,0);
-    circle(mouseX,mouseY,50);
-    
+    circle(mouseX,mouseY,10);
+ 
+
     let pos = {
       x: x,
       y: y,
     }
-    
-    //console.log(pos);
+    console.log(pos);
     socket.emit('positionEvent',pos);
 
   }

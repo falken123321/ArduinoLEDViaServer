@@ -7,7 +7,7 @@ app.use(express.static('public'))
 //   res.send('Hej verden din luder')
 // })
  
-const server = app.listen(3000)
+const server = app.listen(2911);
 
 const socket = require('socket.io');
 const io = socket(server)
@@ -28,7 +28,14 @@ function newConnection(socket) {
 
     socket.on('positionEvent', (data) =>{
         console.log(data);
+        socket.broadcast.emit('positionEvent', data);
+
     })
+
+    // function mouseMsg(data) {
+    //     socket.broadcast.emit('positionEvent',data);
+    //     console.log(data);
+    // }
 
 }
 
