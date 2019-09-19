@@ -21,4 +21,14 @@ io.on('connection', newConnection);
 
 function newConnection(socket) {
     console.log(`New connection ${socket.id}`)
+
+    // io.on('positionEvent', (data) => {
+    //     console.log(data);
+    // })
+
+    socket.on('positionEvent', (data) =>{
+        console.log(data);
+    })
+
 }
+
