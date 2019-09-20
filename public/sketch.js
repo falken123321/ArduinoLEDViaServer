@@ -5,7 +5,26 @@ function setup() {
     background(225);
 
     socket.on('positionEvent', newPositionMessage);
-  }
+
+
+  var fillColor = 0;
+  var mapPlacedX = 0;
+  var mapPlacedY = 0;
+
+    for(var i = 0; i < 200; i++) {
+    fill(fillColor,0,fillColor);
+    fillColor += 1.5;
+    noStroke();
+    rect(mapPlacedX,mapPlacedY,30,30);
+    mapPlacedX += 30;
+    if (mapPlacedX >= 400) {
+      mapPlacedX = 0;
+      mapPlacedY += 30;
+    }
+ }
+}
+
+  
   
   function newPositionMessage(posData) {
     console.log('Got: ')
@@ -14,17 +33,7 @@ function setup() {
   }
   
   function draw() {
-    
-    // line(mouseX,mouseY,0,0);
-    // line(mouseX,mouseY,400,0);
-    // line(mouseX,mouseY,0,400);
-    // line(mouseX,mouseY,400,400);
-    // line(mouseX,mouseY,200,0);
-    // line(mouseX,mouseY,0,200);
-    // line(mouseX,mouseY,400,200);
-    // line(mouseX,mouseY,200,400);
-    
-    // circle(mouseX,mouseY,50);   
+
 
   }
 
