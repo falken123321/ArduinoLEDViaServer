@@ -21,9 +21,12 @@ ol {
     font-size: 25px;
 }
 
-#script {
+#script1 {
     text-align: center;
     position: inline-block;
 }
 
+* {
+    text-align: center;
+}
 
