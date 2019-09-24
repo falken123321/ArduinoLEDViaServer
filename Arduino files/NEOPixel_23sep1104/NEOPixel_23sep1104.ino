@@ -26,7 +26,7 @@ int GColor;
 int BColor;
 int pinNumber;
 int choosenFunction;
-
+int pinCount;
 
 
 void setup() {
@@ -40,29 +40,41 @@ void setup() {
 }
 
 void loop() {
-  /*
-  for (int i = 0; i <= 10; i++) {
-  strip.setPixelColor(i,RColor,BColor,GColor);  
-  }
-  strip.show();
-  */
+
   
   parseCommands();
   
-  if (choosenFunction == 0) {
-    pinNumber++;
-    if(pinNumber >= 10) {
-      pinNumber = 0;
+  if (choosenFunction == 4) {
+    strip.clear();
+    strip.setPixelColor(pinCount,RColor,GColor,BColor); 
+    delay(100); 
+    pinCount++;
+    if(pinCount >= 10) {
+      pinCount = 0;
     }    
+    strip.show();
+  }
+  
+  if(choosenFunction == 1) {
+    strip.clear();
+    strip.setPixelColor(pinNumber,RColor,GColor,BColor);  
   }
   
   if(choosenFunction == 2) {
     strip.fill(strip.Color(RColor,GColor,BColor));
   }
   
-  if(choosenFunction == 1) {
-    strip.clear();
-    strip.setPixelColor(pinNumber,RColor,GColor,BColor);  
+  if(choosenFunction == 3) {
+    strip.setPixelColor(0,255,0,0);
+    strip.setPixelColor(1,0,255,0);
+    strip.setPixelColor(2,0,0,255);
+    strip.setPixelColor(3,255,0,255);
+    strip.setPixelColor(4,0,255,255);
+    strip.setPixelColor(5,255,255,0);
+    strip.setPixelColor(6,255,255,255);
+    strip.setPixelColor(7,0,255,255);
+    strip.setPixelColor(8,255,255,0);
+    strip.setPixelColor(9,0,0,255);
   }
   strip.show();
 }

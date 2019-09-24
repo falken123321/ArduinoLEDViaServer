@@ -54,11 +54,11 @@ function newConnection(socket) {
         socket.broadcast.emit('positionEvent', data);
     
     const colorData = {
-        f: 2,
-        n: 5,
-        r: data[0],
-        g: data[1],
-        b: data[2],
+        f: data.f,
+        n: data.n,
+        r: data.r,
+        g: data.g,
+        b: data.b,
     };
 
 

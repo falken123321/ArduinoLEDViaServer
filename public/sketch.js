@@ -1,38 +1,22 @@
 
 const socket = io();
 
-// function setup() {
-//     createCanvas(400, 400);
-//     background(225);
-
-//     socket.on('positionEvent', newPositionMessage);
-
-
-//   var fillColor = 0;
-//   var fillColor2 = 255;
-//   var mapPlacedX = 0;
-//   var mapPlacedY = 0;
-
-//     for(var i = 0; i < 200; i++) {
-//     fill(fillColor,0,fillColor);
-    
-//     fillColor += 1.1;
- 
-    
-//     rect(mapPlacedX,mapPlacedY,30,30);
-//     mapPlacedX += 30;
-//     if (mapPlacedX >= 400) {
-//       mapPlacedX = 0;
-//       mapPlacedY += 30;
-//     }
-//  }
-// }
 
 let colorPicked;
-  
+var slider;
+var sliderPinNumber;
+
 function setup() {
-  createCanvas(400,400);
+  createCanvas(600,600);
   background(200);
+  image(img, 0, 0, 400, 400);
+  slider = createSlider(1, 4, 0, 1);
+  slider.position(30,450);
+  slider.style('width', '80px');
+
+  sliderPinNumber = createSlider(0, 9, 0, 1);
+  sliderPinNumber.position(10,90000);
+  sliderPinNumber.style('width', '80px');
 }  
 
   function newPositionMessage(posData) {
@@ -46,72 +30,43 @@ function setup() {
     img = loadImage("wheel-5-ryb.png");
   }
 
-  function draw() {
-    image(img, 0, 0, 400, 400);
+  function mouseClicked() {
+    var sliderValue = slider.value();
+    var sliderPinNumberValue = sliderPinNumber.value();
 
-    if(mouseIsPressed) {
+
+    
       colorPicked = get(mouseX,mouseY);
-      socket.emit('positionEvent',colorPicked);
+      
+      console.log(sliderValue);
+      const colorData = {
+        f: sliderValue,
+        n: sliderPinNumberValue,
+        r: colorPicked[0],
+        g: colorPicked[1],
+        b: colorPicked[2],
+    };
+      socket.emit('positionEvent',colorData);
+      
       console.log(colorPicked);
   }
   
+  
+  function draw() {
+    background(200);
+    image(img, 0, 0, 400, 400);
+    textSize(15);
+    text('Choose function (1-4)', 10, 430);
+
+    text('1 for choosen pin, with color',300,430);
+    text('2 for full display',300,450);
+    text('3 for random color',300,470);
+    text('4 for running display(PICK COLOR)',300,490);
+    if(slider.value() == 1) {
+      text('Choose pin number', 10, 480);
+      sliderPinNumber.position(30,500);
+    } else {
+      sliderPinNumber.position(-90000,500);
+    }
   }
-
-  // var enemyX = 200;
-  // var enemyY = 200;
-  // function draw() {
-    
-  //   for(var i = 0; i < 800; i++) {
-  //     noStroke();
-  //     fill(0,random(255),random(255));
-  //   enemyX += random(-2,2);
-  //   enemyY += random(-2,2);
-   
-
-  //   if (enemyX > 400) {
-  //     enemyX = 0;
-  //   } 
-
-  //   if (enemyX < 0) {
-  //     enemyX = 400;
-  //   }
-
-  //   if (enemyY > 400) {
-  //     enemyY = 0;
-  //   } 
-
-  //   if (enemyY < 0) {
-  //     enemyY = 400;
-  //   }
-  //   ellipse(enemyX,enemyY,7,7);
-  // }
-  // }
-
-
-
-
-
-
-
-  // function newPoint(pos) {
-
-  //   fill(255,0,0);
-  //   ellipse(pos.x, pos.y, 30,30);
-  // }
-
-  // function mouseDragged() {
-  //   const y = mouseY;
-  //   const x = mouseX;
-    
-  //   fill(0,255,0);
-  //   ellipse(mouseX,mouseY,30 ,30);
  
-
-  //   let pos = {
-  //     x: x,
-  //     y: y,
-  //   }
-  //   console.log(pos);
-   
-
-  //}
