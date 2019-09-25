@@ -43,14 +43,6 @@ function setup() {
   
   
   function draw() {
-    // background(200);
-    // image(img, 0, 0, 400, 400);
-    // textSize(15);
-    // text('Choose function (1-4)', 10, 430);
-
-
-
-    
 
     let d = int(dist(centerX,centerY,mouseX,mouseY));
   d = constrain(d,0,255);
