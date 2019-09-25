@@ -47,7 +47,7 @@ void loop() {
   if (choosenFunction == 4) {
     strip.clear();
     strip.setPixelColor(pinCount,RColor,GColor,BColor); 
-    delay(100); 
+    delay(20); 
     pinCount++;
     if(pinCount >= 10) {
       pinCount = 0;
