@@ -21,10 +21,10 @@ ol {
     font-size: 25px;
 }
 
-#script1 {
-    text-align: center;
-    position: inline-block;
-}
+* {
 
+    position: inline-block;
+    background: rgb(255);
+}
 
 

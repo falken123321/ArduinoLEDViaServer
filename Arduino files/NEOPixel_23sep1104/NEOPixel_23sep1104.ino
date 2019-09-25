@@ -65,16 +65,17 @@ void loop() {
   }
   
   if(choosenFunction == 3) {
-    strip.setPixelColor(0,255,0,0);
-    strip.setPixelColor(1,0,255,0);
-    strip.setPixelColor(2,0,0,255);
-    strip.setPixelColor(3,255,0,255);
-    strip.setPixelColor(4,0,255,255);
-    strip.setPixelColor(5,255,255,0);
-    strip.setPixelColor(6,255,255,255);
-    strip.setPixelColor(7,0,255,255);
-    strip.setPixelColor(8,255,255,0);
-    strip.setPixelColor(9,0,0,255);
+    delay(1000);
+    strip.setPixelColor(0,random(255),random(255),random(255));
+    strip.setPixelColor(1,random(255),random(255),random(255));
+    strip.setPixelColor(2,random(255),random(255),random(255));
+    strip.setPixelColor(3,random(255),random(255),random(255));
+    strip.setPixelColor(4,random(255),random(255),random(255));
+    strip.setPixelColor(5,random(255),random(255),random(255));
+    strip.setPixelColor(6,random(255),random(255),random(255));
+    strip.setPixelColor(7,random(255),random(255),random(255));
+    strip.setPixelColor(8,random(255),random(255),random(255));
+    strip.setPixelColor(9,random(255),random(255),random(255));
   }
   strip.show();
 }
